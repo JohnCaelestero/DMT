@@ -8,7 +8,7 @@ import logging
 import os
 
 from embed import Instagram, Pornhub, XV, Tenor, Attachments
-from commands import refresh_server  # import command file
+from commands import lock, unlock, refresh_server
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -23,10 +23,8 @@ logging.basicConfig(level=logging.INFO)
 intents = discord.Intents.default()
 intents.message_content = True
 
-# Prefix does NOT affect slash commands
 bot = commands.Bot(command_prefix="!", intents=intents)
 
-# Define guild object for guild-specific commands
 GUILD = discord.Object(id=GUILD_ID)
 
 session: aiohttp.ClientSession | None = None
@@ -51,38 +49,11 @@ async def process_message(message: discord.Message) -> bool:
 
 
 # --------------------
-# LOCK / UNLOCK COMMANDS (guild-specific)
+# Load commands from commands folder
 # --------------------
-
-@bot.tree.command(
-    name="lock",
-    description="Enable age-restricted (NSFW) mode for a channel.",
-    guild=GUILD
-)
-@app_commands.checks.has_permissions(manage_channels=True)
-async def lock(interaction: discord.Interaction, channel: discord.TextChannel):
-    await channel.edit(nsfw=True)
-    await interaction.response.send_message(
-        f"🔞 {channel.mention} is now age-restricted (NSFW enabled)."
-    )
-
-
-@bot.tree.command(
-    name="unlock",
-    description="Disable age-restricted (NSFW) mode for a channel.",
-    guild=GUILD
-)
-@app_commands.checks.has_permissions(manage_channels=True)
-async def unlock(interaction: discord.Interaction, channel: discord.TextChannel):
-    await channel.edit(nsfw=False)
-    await interaction.response.send_message(
-        f"✅ {channel.mention} is no longer age-restricted (NSFW disabled)."
-    )
-
-
-# Function to load commands from the commands folder
 def load_commands():
-    refresh_server.setup(bot, GUILD_ID, process_message)
+    lock.setup(bot, GUILD)
+    unlock.setup(bot, GUILD)
 
 
 @bot.event
