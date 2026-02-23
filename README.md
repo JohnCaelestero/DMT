@@ -4,6 +4,8 @@ A lightweight Discord bot that automatically converts user-uploaded media and su
 
 This project is **content-agnostic**: it does not host, store, or generate media. All embeds are created from **user-provided content** inside Discord servers.
 
+Check out [Wiki](https://github.com/JohnCaelestero/DMT/wiki) for more info 
+
 ---
 
 ## ✨ Features
