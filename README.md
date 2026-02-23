@@ -39,10 +39,18 @@ pip install discord.py aiohttp beautifulsoup4
 
 ```
 project/
-├── bot.py            # Main bot script
+├── main.py            # Main bot script (updated with lock/unlock commands)
+├── commands/         # Command modules
+│   ├── refresh_server.py
+├── embed/            # Embed handler modules
+│   ├── Attachments.py
+│   ├── Instagram.py
+│   ├── Pornhub.py
+│   ├── Tenor.py
+│   ├── XV.py
 ├── token.txt         # Your bot token (not committed)
 ├── serverID.txt      # Your server (guild) ID (not committed)
-└── README.md
+└── README.md         # Project description and usage
 ```
 
 ---
