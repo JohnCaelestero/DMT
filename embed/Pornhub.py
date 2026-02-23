@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 PH_REGEX = r"https?://(?:www\.)?pornhub\.com/view_video\.php\?viewkey=[\w-]+"
 COLOR = discord.Color.orange()
 USER_AGENT = "Mozilla/5.0 (EmbedBot/3.1)"
-ARCHIVE_CHANNEL_ID = 1446798387771998280
+ARCHIVE_CHANNEL_ID = ID
 
 async def fetch_metadata(session, url):
     async with session.get(url, headers={"User-Agent": USER_AGENT}) as res:
