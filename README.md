@@ -1,4 +1,4 @@
-# Discord Media Embed Bot
+# Discord Media Tool
 
 A lightweight Discord bot that automatically converts user-uploaded media and supported links into clean, consistent embeds.
 
@@ -74,20 +74,17 @@ YOUR_BOT_TOKEN_HERE
 ```
 YOUR_SERVER_ID_HERE
 ```
-
-> ⚠️ Never commit these files to a public repository.
-
 ---
 
 ### 3. Configure channel IDs
 
-Inside the script, update the following constant:
+Inside the Pornhub.py script, update the following constant:
 
 ```python
 ARCHIVE_CHANNEL_ID = YOUR_ARCHIVE_CHANNEL_ID
 ```
 
-This channel is used to temporarily store thumbnails when needed.
+This channel is used to parmanently store thumbnails (Using "og:image" makes the thumbnail expire and the embed breaks, the archive channel helps keep the thumbnail up for basically forever. Make sure to mute the archive channel since it has no real use for the consumer.)
 
 ---
 
